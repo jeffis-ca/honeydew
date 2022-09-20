@@ -2,7 +2,6 @@ import os
 from google.cloud import bigquery
 from google.cloud import storage
 import pandas as pd
-import pandas_gbq
 
 class GcpConnector:
     """

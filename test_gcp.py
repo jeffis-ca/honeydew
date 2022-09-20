@@ -7,7 +7,7 @@ GCP_DATASET_ID = os.environ.get('GCP_DATASET_ID')
 GCP_BUCKET_ID = os.environ.get('GCP_BUCKET_ID')
 GCP_TABLE_ID = os.environ.get('GCP_TABLE_ID')
 
-g_client = gcp_connector(credential_file='/creds/pluto.json', proxy=GCP_PROXY)
+g_client = GcpConnector(credential_file='/creds/pluto.json', proxy=GCP_PROXY)
 project_id = GCP_PROJECT_ID
 dataset_id = GCP_DATASET_ID
 bucket_id = GCP_BUCKET_ID
