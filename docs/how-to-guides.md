@@ -1,8 +1,8 @@
 # MySQL
 ## Importing a CSV file into MySQL by replacing a table
 
-```Python
-from honeydew import mysql_connector
+```py title="load_csv_truncate.py"
+from honeydew import MysqlConnector
 
 # Instantiate a mysql connector
 mysql_conn = MysqlConnector(host = 'mysql.mydomain.com', port = '3306', user = 'my_user', password = 'my_password', allow_local_infile=True)
@@ -17,12 +17,13 @@ result = mysql_conn.load_csv_local(
 
 ```
 
+
 ## Importing a CSV file into MySQL by appending a table
-```Python
-from honeydew import db_connector
+```py title="load_csv_append.py"
+from honeydew import MysqlConnector
 
 # Instantiate a mysql connector
-mysql_conn = db_connector(db_type = 'mysql', host = 'mysql.mydomain.com', port = '3306', user = 'my_user', password = 'my_password', allow_local_infile=True)
+mysql_conn = MysqlConnector(db_type = 'mysql', host = 'mysql.mydomain.com', port = '3306', user = 'my_user', password = 'my_password', allow_local_infile=True)
 
 # Import a CSV file into a table by replacing the content
 result = mysql_conn.load_csv_local(
@@ -36,27 +37,29 @@ result = mysql_conn.load_csv_local(
 
 # GCP
 ## Instantiating a GCP connector with or without proxy
-```Python
+```py title="init_gcp.py"
 from honeydew import GcpConnector
 
 # Instantiate a GCP connector with internet connection behind proxy
-g_client = gcp_connector(credential_file='my-secret-credential.json', proxy='http://proxy.mydomain.com:8080')
+g_client = GcpConnector(credential_file='my-secret-credential.json', proxy='http://proxy.mydomain.com:8080')
 
 # Instantiate a GCP connector with direct internet connection
-g_client = gcp_connector(credential_file='my-secret-credential.json')
+g_client = GcpConnector(credential_file='my-secret-credential.json')
+
 ```
 
 
 ## Querying BigQuery table and store the result into a DataFrame
-```Python
-from honeydew import gcp_connector
+```py title="query_to_df.py"
+from honeydew import GcpConnector
 
 # Instantiate a GCP connector with internet connection behind proxy
-g_client = gcp_connector(credential_file='my-secret-credential.json', proxy='http://proxy.mydomain.com:8080')
+g_client = GcpConnector(credential_file='my-secret-credential.json', proxy='http://proxy.mydomain.com:8080')
 project_id = 'sweet-honeydew-125283'
 
 # Submit a query and store the result into a DataFrame
 query = 'SELECT * FROM `sweet-honeydew-125283.universe.galaxies` LIMIT 5'
 df = g_client.bq_query_to_dataframe(project_id, query)
 print(df.head())
+
 ```

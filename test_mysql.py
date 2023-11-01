@@ -1,15 +1,13 @@
 
-from honeydew import mysql_connector, gcp_connector
+from honeydew import MysqlConnector, GcpConnector
 import os
-DB_HOST = os.environ.get('DB_HOST')
-DB_PORT = os.environ.get('DB_PORT')
-DB_UID = os.environ.get('DB_UID')
-DB_PWD = os.environ.get('DB_PWD')
+from dotenv import load_dotenv
+load_dotenv()
 
-mysql_conn = MysqlConnector(host = DB_HOST, port = DB_PORT, user = DB_UID, password = DB_PWD)
+mysql_conn = MysqlConnector(host = MYSQL_DB_HOST, port = MYSQL_DB_PORT, user = MYSQ_DB_UID, password = MYSQL_DB_PWD)
 mysql_conn.load_csv_local(
     db_name='dashboards',
     table_name='test',
-    file_name='/apps/test/test.csv',
+    file_name='./test/test.csv',
     write_disposition='WRITE_TRUNCATE'
 )

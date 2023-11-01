@@ -1,9 +1,25 @@
 site_name: Honeydew
 theme:
   name: "material"
+  features:
+    - content.code.copy
+    - content.code.select    
+
 plugins:
   - search
   - mkdocstrings
+  - autorefs
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      auto_title: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
 
 nav:
   - Honeydew Docs: index.md

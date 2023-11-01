@@ -1,6 +1,5 @@
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
-
 # To use a consistent encoding
 from codecs import open
 from os import path
@@ -15,7 +14,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="honeydew",
-    version="0.1.9",
+    version='0.1.10',
     description="Collection of connectors for ETL",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -35,6 +34,8 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Operating System :: OS Independent"
     ],
     packages=["honeydew"],

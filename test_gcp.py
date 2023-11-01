@@ -1,4 +1,5 @@
 from honeydew import gcp_connector
+from dotenv import load_dotenv
 import os
 CREDENTIAL_FILE = os.environ.get('CREDENTIAL_FILE')
 GCP_PROXY = os.environ.get('GCP_PROXY')
