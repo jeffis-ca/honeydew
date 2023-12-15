@@ -1,0 +1,63 @@
+name: Build
+
+# on:
+#   release:
+#     types: [published]
+on:
+  # Dev: Run it on pull request to the default repository branch
+  pull_request:
+    branches: [master]
+  
+  # Prod: Run it on push to the default repository branch
+  # push:
+  #   branches: [master]
+
+jobs:
+    deployment:
+      name: Production Deployment
+      runs-on: [jeffis,Linux]
+      env:
+        ENV: pr
+      environment:
+        name: github-pages
+        url: https://honeydew-lib.github.io/
+
+      steps:
+        - name: Check out the repo
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+        - name: Pre-check
+          run: |
+              nslookup registry-1.docker.io
+              
+        - name: Get changed files
+          id: changed-files
+          uses: tj-actions/changed-files@v35
+          
+  
+        - name: Build docs
+          run: |
+              mkdir ./site
+              mkdocs build -d ./site
+              cd ./site
+              git add -A .
+              git commit -m "docs"
+              git push -u origin master
+        
+        - name: Deploy to Github Pages
+          id: deploy
+          uses: actions/deploy-pages@v2
+          with:
+            folder: ./site
+            clean: true
+            token: ${{ secrets.GITHUB_TOKEN }}
+            # fqdn: ${{ secrets.FQDN }}
+            # cname: ${{ secrets.CNAME }}
+            # commit_message: ${{ secrets.COMMIT_MESSAGE }}
+            # committer: ${{ secrets.COMMITTER }}
+        # - name: Package and deploy to Pypi
+        #   run: |
+        #       python3 setup.py sdist bdist_wheel
+        #       python3 -m twine upload dist/*
+        #       rm -rf ./dist

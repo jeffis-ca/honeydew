@@ -8,12 +8,14 @@ from scp import SCPClient
 # import logging
 class MysqlConnector:
     """Instantiate a DB connector.
+
     Args:
         host (str): Database host 
         port (str): Database port
         user (str): Username
         password (str): Password
         allow_local_infile (boolean): Local infile is allowed when the value is True
+
     Returns:
         result (str): Value is 'OK' when successful
     """   
@@ -41,9 +43,11 @@ class MysqlConnector:
         
     def query_without_fetch(self, query_str):
         """
-        Send non DQL query
+        Send non DQL query.
+
         Args:
             query_str (str): sql query
+
         Returns:
             result (str): Value is 'OK' when successful
         """
@@ -52,9 +56,11 @@ class MysqlConnector:
     
     def query_to_dataframe(self, query_str):
         """
-        Query and store the result in a dataframe
+        Query and store the result in a dataframe.
+
         Args:
             query_str (str): sql query
+
         Returns:
             result (dataframe): Result in a dataframe
         """
@@ -74,7 +80,8 @@ class MysqlConnector:
         is_local_csv=True
     ):
         """
-        Load a local CSV file into a table
+        Load a local CSV file into a table.
+
         Args:
             db_name (str): Database name where the CSV will be loaded
             table_name (str): Table name where the CSV will be loaded
@@ -83,6 +90,7 @@ class MysqlConnector:
             ignore_rows (str): Number of rows that will be ignored from the top
             write_disposition (str): Write method to add data into table (WRITE_TRUNCATE, WRITE_APPEND)
             is_local_csv (boolean): If the value is True, then CSV file is in local machine. If the value is False, then CSV file is in remote machine.
+            
         Returns:
             result (str): The result of function
         """

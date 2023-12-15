@@ -25,6 +25,12 @@ nav:
   - Honeydew Docs: index.md
   - MySQL Connector: mysql.md
   - GCP Connector: gcp.md
+  - GCP BigQuery Connector: gcp-bigquery.md
+  - GCP Cloud Logging Connector: gcp-logging.md
+  - GCP Secret Manager Connector: gcp-secretmanager.md
+  - GCP Cloud Storage Connector: gcp-storage.md
+  - GCP Translate Connector: gcp-translate.md
   - SSH Connector: ssh.md
   - Utility Functions: utils.md
+  - Notification Functions: notification.md
   - How-To Guides: how-to-guides.md

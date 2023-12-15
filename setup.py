@@ -11,16 +11,30 @@ HERE = path.abspath(path.dirname(__file__))
 with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
+def increase_version():
+    with open(path.join(HERE, 'version'), 'r') as f:
+        version = f.read()
+        print(f"Current version: {version}")
+        segments = version.split('.')
+        last_segment = int(segments[-1])
+        last_segment = last_segment + 1
+        segments[-1] = str(last_segment)
+        new_version = '.'.join(segments)
+        with open(path.join(HERE, 'version'), 'w') as f:
+            f.write(new_version)
+            print(f"New version: {new_version}")
+    return new_version
+
 # This call to setup() does all the work
 setup(
     name="honeydew",
-    version='0.1.10',
+    version=increase_version(),
     description="Collection of connectors for ETL",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://honeydew-lib.github.io/",
     project_urls = {
-        'Repository': 'https://github.com/honeydew-lib/honeydew',
+        'Repository': 'https://github.com/jeffis-ca/honeydew',
         'Documentation': 'https://honeydew-lib.github.io/'
     },
     author="Poltak Jefferson",
@@ -40,5 +54,10 @@ setup(
     ],
     packages=["honeydew"],
     include_package_data=True,
-    install_requires=["pandas","numpy","mysql-connector-python","google-cloud","google-auth","google-cloud-bigquery","google-cloud-bigquery-storage","google-cloud-storage", "pandas_gbq", "paramiko", "scp", 'pytz']
+    install_requires=[
+        "pandas","numpy","mysql-connector-python","google-cloud","google-auth","google-cloud-bigquery","google-cloud-bigquery-storage","google-cloud-storage",
+        "google-cloud-logging","google-cloud-secret-manager","google-cloud-translate", "pandas_gbq", "paramiko", "scp", "pytz", "pigz-python", "clickhouse-connect",
+        "mkdocs","mkdocs-material","mkdocs-material-extensions","mkdocstrings","mkdocstrings-python","mkdocs-pymdownx-material-extras","pymdown-extensions","build",
+        "twine", "requests", "wheel","gitpython"
+                      ]
 )

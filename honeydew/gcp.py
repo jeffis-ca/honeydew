@@ -6,6 +6,7 @@ import pandas as pd
 class GcpConnector:
     """
     Instantiate a GCP connector.
+
     Args:
         credential_file (str): Credential json file
         proxy (str): Proxy address
@@ -20,7 +21,8 @@ class GcpConnector:
 
     def bq_query_to_dataframe(self, project_id, query, timeout=3600, method=1):
         """
-        Submit query to BigQuery and store result into pandas dataframe
+        Submit query to BigQuery and store result into pandas dataframe.
+
         Args:
             project_id (str): Project ID
             query (str): SQL query
@@ -42,7 +44,8 @@ class GcpConnector:
 
     def bq_query_non_dql(self, project_id, query):
         """
-        Submit non Data Query Language (DQL) type of query to BigQuery. Example: CREATE, DROP, TRUNCATE, INSERT, UPDATE, DELETE
+        Submit non Data Query Language (DQL) type of query to BigQuery. Example: CREATE, DROP, TRUNCATE, INSERT, UPDATE, DELETE.
+
         Args:
             project_id (str): Project ID
             query (str): SQL query
@@ -57,7 +60,8 @@ class GcpConnector:
 
     def bq_export_table_to_gcs(self, project_id, dataset_id, table_id, gcs_uri, format='CSV', delimiter=',', enable_compression=True, compression='GZIP', overwrite=True, region='northamerica-northeast1'):
         """
-        Export BigQuery table into Google Cloud Storage (GCS)
+        Export BigQuery table into Google Cloud Storage (GCS).
+
         Args:
             project_id (str): Project ID
             table_id (str): Table ID
@@ -91,7 +95,8 @@ class GcpConnector:
 
     def gcs_download_single_file(self, project_id, bucket_id, source_blob_path, destination_path):
         """
-        Download a single object from Google Cloud Storage (GCS)
+        Download a single object from Google Cloud Storage (GCS).
+
         Args:
             project_id (str): Project ID
             bucket_id (str): Bucket ID
@@ -110,7 +115,8 @@ class GcpConnector:
 
     def gcs_download_objects_with_pattern(self, project_id, bucket_id, blob_prefix, destination_dir_path, printout=True):
         """
-        Download multiple objects which have same prefix pattern from Google Cloud Storage (GCS)
+        Download multiple objects which have same prefix pattern from Google Cloud Storage (GCS).
+
         Args:
             project_id (str): Project ID
             bucket_id (str): Bucket ID
@@ -136,7 +142,8 @@ class GcpConnector:
 
     def gcs_upload_single_file(self, project_id, bucket_id, local_file, destination_blob):
         """
-        Upload a single object from Google Cloud Storage (GCS)
+        Upload a single object from Google Cloud Storage (GCS).
+        
         Args:
             project_id (str): Project ID
             bucket_id (str): Bucket ID
