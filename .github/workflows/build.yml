@@ -23,14 +23,14 @@ jobs:
         url: https://honeydew-lib.github.io/
 
       steps:
-        - name: Build docs
-          run: |
-              mkdir ./site
-              mkdocs build -d ./site
-              cd ./site
-              git add -A .
-              git commit -m "docs"
-              git push -u origin master
+      #   - name: Build docs
+      #     run: |
+      #         mkdir ./site
+      #         mkdocs build -d ./site
+      #         cd ./site
+      #         git add -A .
+      #         git commit -m "docs"
+      #         git push -u origin master
         
         # - name: github-pages
         #   id: deploy
