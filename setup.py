@@ -1,29 +1,32 @@
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
+import requests
+
 # To use a consistent encoding
 from codecs import open
 from os import path
-
-# The directory containing this file
-HERE = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
 with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-def increase_version():
-    with open(path.join(HERE, 'version'), 'r') as f:
-        version = f.read()
-        print(f"Current version: {version}")
-        segments = version.split('.')
-        last_segment = int(segments[-1])
-        last_segment = last_segment + 1
-        segments[-1] = str(last_segment)
-        new_version = '.'.join(segments)
-        with open(path.join(HERE, 'version'), 'w') as f:
-            f.write(new_version)
-            print(f"New version: {new_version}")
-    return new_version
+
+# Get library version from pypi.org
+def get_current_version():
+    url = "https://pypi.org/pypi/honeydew/json"
+    response = requests.get(url)
+    data = response.json()
+    version = data["info"]["version"]
+    return version
+
+def increase_version(version=get_current_version()):
+    segments = version.split('.')
+    last_segment = int(segments[-1])
+    last_segment = last_segment + 1
+    segments[-1] = str(last_segment)
+    new_version = '.'.join(segments)
+    return new_version    
+    
 
 # This call to setup() does all the work
 setup(
