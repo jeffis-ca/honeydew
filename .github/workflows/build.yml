@@ -45,7 +45,7 @@ jobs:
               git commit -m "docs"
               git push -u origin master
         
-        - name: Deploy to Github Pages
+        - name: github-pages
           id: deploy
           uses: actions/deploy-pages@v2
           with:
