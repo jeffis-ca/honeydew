@@ -1,0 +1,31 @@
+name: Build
+
+# on:
+#   release:
+#     types: [published]
+on:
+  # Dev: Run it on pull request to the default repository branch
+  # pull_request:
+  #   branches: [master]
+  
+  # Prod: Run it on push to the default repository branch
+  push:
+    branches: [master]
+
+jobs:
+    deployment:
+      name: Production Deployment
+      runs-on: [Linux]
+      env:
+        ENV: pr
+      environment:
+        name: github-pages
+        url: https://honeydew-lib.github.io/
+
+      steps:
+
+        - name: Package and deploy to Pypi
+          run: |
+              python3 setup.py sdist bdist_wheel
+              python3 -m twine upload dist/*
+              rm -rf ./dist

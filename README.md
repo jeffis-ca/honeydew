@@ -1,10 +1,12 @@
 # Honeydew
 This library is a collection of database and GCP connector for ETL
 
-## Supported connectors
+## Supported connectors and helper functions
 * MySQL
 * GCP
 * SSH
+* Utilities
+* Notification
 
 ## Installation
 ```

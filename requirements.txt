@@ -12,6 +12,9 @@ google-cloud-bigquery-reservation
 google-cloud-bigquery-storage
 google-cloud-core
 google-cloud-storage
+google-cloud-secret-manager
+google-cloud-logging
+google-cloud-translate
 google-crc32c
 grafeas>=1.0.1
 graphviz>=0.13.2
@@ -20,3 +23,17 @@ pandas-gbq
 pytz
 paramiko
 scp
+pigz-python
+clickhouse-connect
+mkdocs
+mkdocs-material
+mkdocs-material-extensions
+mkdocstrings
+mkdocstrings-python
+mkdocs-pymdownx-material-extras
+pymdown-extensions
+build
+twine
+wheel
+requests
+gitpython
