@@ -15,7 +15,7 @@ on:
 jobs:
     deployment:
       name: Production Deployment
-      runs-on: [jeffis,Linux]
+      runs-on: [Linux]
       env:
         ENV: pr
       environment:
