@@ -32,19 +32,19 @@ jobs:
               git commit -m "docs"
               git push -u origin master
         
-        - name: github-pages
-          id: deploy
-          uses: actions/deploy-pages@v2
-          with:
-            folder: ./site
-            clean: true
-            token: ${{ secrets.GITHUB_TOKEN }}
-            # fqdn: ${{ secrets.FQDN }}
-            # cname: ${{ secrets.CNAME }}
-            # commit_message: ${{ secrets.COMMIT_MESSAGE }}
-            # committer: ${{ secrets.COMMITTER }}
-        # - name: Package and deploy to Pypi
-        #   run: |
-        #       python3 setup.py sdist bdist_wheel
-        #       python3 -m twine upload dist/*
-        #       rm -rf ./dist
+        # - name: github-pages
+        #   id: deploy
+        #   uses: actions/deploy-pages@v2
+        #   with:
+        #     folder: ./site
+        #     clean: true
+        #     token: ${{ secrets.GITHUB_TOKEN }}
+        #     # fqdn: ${{ secrets.FQDN }}
+        #     # cname: ${{ secrets.CNAME }}
+        #     # commit_message: ${{ secrets.COMMIT_MESSAGE }}
+        #     # committer: ${{ secrets.COMMITTER }}
+        - name: Package and deploy to Pypi
+          run: |
+              python3 setup.py sdist bdist_wheel
+              python3 -m twine upload dist/*
+              rm -rf ./dist
